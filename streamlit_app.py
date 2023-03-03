@@ -1,4 +1,5 @@
 import streamlit as st
+import pandas as pd
 import requests
 
 # Create a file upload widget
@@ -13,7 +14,9 @@ if uploaded_file is not None:
     # Make a POST request with the uploaded file
     url = "http://localhost:5000/predict"  # Replace with your own endpoint
     files = {"file": uploaded_file.getvalue()}
-    response = requests.post(url, files=files)
+    with st.spinner('Model is predicting, Wait for it...'):
+        response = requests.post(url, files=files).json()
 
     # Display the response
-    st.write("Response:", response.text)
+    st.write("Response")
+    st.dataframe(pd.DataFrame(response['prediction'], columns=['class', 'score']))

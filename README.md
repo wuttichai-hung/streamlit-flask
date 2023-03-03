@@ -1,10 +1,10 @@
 # Example application streamlit-flask
-- streamlit for webserver
-- flask for api
 
+- webserver: streamlit for uploading an image
+- api: flask for predicting tensorflow model
 
-## Run streamlit
+## Let's Run it
+### Run streamlit
 `streamlit run streamlit_app.py`
-
-## Run flask
+### Run flask
 `flask --app flask_app run`
